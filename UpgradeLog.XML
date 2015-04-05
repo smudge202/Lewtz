@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Lewtz">
+</Property><Property Name="Solution File" Value="E:\Coding\Current Programs\Lewtz\Lewtz.sln">
+</Property><Property Name="Date" Value="Sunday, December 28, 2014">
+</Property><Property Name="Time" Value="14:42:05 PM">
+</Property></Properties><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\rds.csproj" Description="Project file successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\rds.csproj">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\EventArgs.cs" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\EventArgs.cs">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\Interfaces.cs" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\Interfaces.cs">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\RDSCreatableObject.cs" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\RDSCreatableObject.cs">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\RDSNullValue.cs" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\RDSNullValue.cs">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\RDSObject.cs" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\RDSObject.cs">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\RDSRandom.cs" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\RDSRandom.cs">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\RDSTable.cs" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\RDSTable.cs">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\RDSValue.cs" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\RDSValue.cs">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\Diagrams\Model.cd" Description="File successfully backed up as E:\Coding\Current Programs\Lewtz\Backup\Diagrams\Model.cd">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\rds.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="rds" Source="..\rds\rds\rds.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="rds" Source="..\rds\rds\rds.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
