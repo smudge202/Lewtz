@@ -52,7 +52,12 @@ namespace Lewtz
 
         public override IRDSObject rdsCreateInstance()
         {
-            return new MagicItem(ItemType,ItemName,Cost,totalBonus);
+            return new MagicItem(ItemType, ItemName, Cost, totalBonus);
+        }
+
+        public override void OnRDSHit(EventArgs e)
+        {
+            //DO SHIT
         }
     }
 }

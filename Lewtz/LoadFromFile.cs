@@ -47,15 +47,15 @@ namespace Lewtz
                 MinorArmorTable.AddEntry(MinorSpecificArmors, 89);
                     MinorSpecificArmors.AddEntry(new MagicItem("Specific Armor", "Armor Name", 2, 0), 1, false, true, true);
 
-            MinorArmorTable.AddEntry(MinorSpecificShields, 91);
-                MinorSpecificShields.AddEntry(new MagicItem("Specific Shield", "Shield Name", 2, 0), 1,   false, true, true);
-            MinorArmorTable.AddEntry(new MagicItem(         "Armor Ability",   "Ability",     0, 1), 100); //special abilites. ROLL AGAIN
+                MinorArmorTable.AddEntry(MinorSpecificShields, 91);
+                    MinorSpecificShields.AddEntry(new MagicItem("Specific Shield", "Shield Name", 2, 0), 1,   false, true, true);
+                MinorArmorTable.AddEntry(new MagicItem(         "Armor Ability",   "Ability",     0, 1), 100); //special abilites. ROLL AGAIN
 
 
-            MinorArmorAbilitiesTable.LoadFromFile("DMG Armor Special Abilities.Lewt", "Armor Ability", 3, "Minor");
-            MinorShieldAbilitiesTable.LoadFromFile("DMG Shield Special Abilities.Lewt", "Shield Ability", 3, "Minor");
-            MinorMeleeWeaponsAbilitiesTable.LoadFromFile("DMG Melee Weapon Special Abilities.Lewt", "Melee Weapon Ability", 3, "Minor");
-            MinorRangedWeaponsAbilitiesTable.LoadFromFile("DMG Ranged Weapon Special Abilities.Lewt", "Ranged Weapon Ability", 3, "Minor");
+                MinorArmorAbilities.LoadFromFile("DMG Armor Special Abilities.Lewt", "Armor Ability", 3, "Minor");
+                MinorShieldAbilities.LoadFromFile("DMG Shield Special Abilities.Lewt", "Shield Ability", 3, "Minor");
+                MinorMeleeWeaponsAbilities.LoadFromFile("DMG Melee Weapon Special Abilities.Lewt", "Melee Weapon Ability", 3, "Minor");
+                MinorRangedWeaponsAbilities.LoadFromFile("DMG Ranged Weapon Special Abilities.Lewt", "Ranged Weapon Ability", 3, "Minor");
 
             MinorMagicTable.AddEntry(MinorWeaponsTable, 9);
                 MinorWeaponsTable.AddEntry(new MagicItem("Magic Weapon", "+1", 0, 1), 70);

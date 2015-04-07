@@ -15,7 +15,7 @@ namespace Lewtz
     {
         public FormLewtz()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             LoadTables();
         }
         private int hoardCount = 0;
@@ -25,25 +25,27 @@ namespace Lewtz
 
         Random rand = new Random(); //used for calculating dice roll values
 
+
+        //FIX THIS SHIT. CREATE A NEW CLASS FOR EVERY TABLE TYPE? -> TreasureTable : RDSTable
         RDSTable TreasureTable = new RDSTable(); //used for top-tier random drops of tons of subtables
 
         //If the table ends in (-Table), the table includes subtables (ItemTable include minor, medium, etc)
         //Entries NOT ending in (-Table) are loaded from files
         #region TABLE DECLARATIONS
 
-        private RDSTable Coins = new RDSTable();
+        private RDSTable Coins = new RDSTable(); //change this to something else?
 
         #region GOODS TABLE
-        private RDSTable GoodsTable = new RDSTable();
+        private RDSTable GoodsTable = new RDSTable(); //GoodsTable : RDSTable -> load the tabbed thigns into this table
 
             private RDSTable ArtTable = new RDSTable();
 
             private RDSTable GemTable = new RDSTable();
-                private RDSTable LowestGemTable = new RDSTable();
-                private RDSTable LowerGemTable = new RDSTable();
-                private RDSTable LowGemTable = new RDSTable();
-                private RDSTable HighGemTable = new RDSTable();
-                private RDSTable HigherGemTable = new RDSTable();
+                private RDSTable LowestGemTable =  new RDSTable();
+                private RDSTable LowerGemTable =   new RDSTable();
+                private RDSTable LowGemTable =     new RDSTable();
+                private RDSTable HighGemTable =    new RDSTable();  //CHANGE THEM ALL
+                private RDSTable HigherGemTable =  new RDSTable();
                 private RDSTable HighestGemTable = new RDSTable();
         #endregion
 
@@ -62,31 +64,31 @@ namespace Lewtz
                     private RDSTable CommonWeapons = new RDSTable();
                     private RDSTable UncommonWeapons = new RDSTable();
                     private RDSTable CommonRangedWeapons = new RDSTable();
-                    private RDSTable UncommonRangedWeapons = new RDSTable();
+                    private RDSTable UncommonRangedWeapons = new RDSTable(); ///CHHAAAANNNGEEEE THESSEE
 
             private RDSTable MagicItemsTable = new RDSTable(); //used to store dynamically created weapons and armor
 
                 private RDSTable MinorMagicTable = new RDSTable();
                     private RDSTable MinorArmorTable = new RDSTable();
                         private RDSTable MinorSpecificArmors = new RDSTable();
-                        private RDSTable MinorArmorAbilitiesTable = new RDSTable();
+                        private RDSTable MinorArmorAbilities = new RDSTable();
 
                     private RDSTable MinorShieldsTable = new RDSTable();
                         private RDSTable MinorSpecificShields = new RDSTable();
                         private RDSTable MinorShieldAbilities = new RDSTable();
-                        private RDSTable MinorShieldAbilitiesTable = new RDSTable();
+                        //private RDSTable MinorShieldAbilitiesTable = new RDSTable();
 
                     private RDSTable MinorWeaponsTable = new RDSTable();
                         private RDSTable MinorSpecificWeapons = new RDSTable();
-                        private RDSTable MinorMeleeWeaponsAbilitiesTable = new RDSTable();
-                        private RDSTable MinorRangedWeaponsAbilitiesTable = new RDSTable();
+                        private RDSTable MinorMeleeWeaponsAbilities = new RDSTable();
+                        private RDSTable MinorRangedWeaponsAbilities = new RDSTable();
 
-                    private RDSTable MinorPotionsTable = new RDSTable();
-                    private RDSTable MinorRingsTable = new RDSTable();
-                    private RDSTable MinorRodsTable = new RDSTable();
-                    private RDSTable MinorScrollsTable = new RDSTable();
-                    private RDSTable MinorStaffsTable = new RDSTable();
-                    private RDSTable MinorWandsTable = new RDSTable();
+                    private RDSTable MinorPotionsTable =       new RDSTable();
+                    private RDSTable MinorRingsTable =         new RDSTable();
+                    private RDSTable MinorRodsTable =          new RDSTable();
+                    private RDSTable MinorScrollsTable =       new RDSTable();
+                    private RDSTable MinorStaffTable =         new RDSTable();
+                    private RDSTable MinorWandsTable =         new RDSTable();
                     private RDSTable MinorWondrousItemsTable = new RDSTable();
                     
                 private RDSTable MediumMagicTable = new RDSTable();
@@ -132,7 +134,7 @@ namespace Lewtz
                     private RDSTable MajorStaffsTable = new RDSTable();
                     private RDSTable MajorWandsTable = new RDSTable();
                     private RDSTable MajorWondrousItemsTable = new RDSTable();
-                #endregion //ITEMSTABLE
+                #endregion //ITEMSTABLE 
 
         #endregion //DECLARATIONS
 
@@ -358,7 +360,7 @@ namespace Lewtz
 
                         foreach (Item m in TreasureTable.rdsResult)
                         {
-                            if (m.GetItemType() == "") continue;
+                            if (m.GetItemType() == "" || m.ToString() == "") continue;
 
                             switch(m.GetItemType())
                             {
@@ -448,15 +450,16 @@ namespace Lewtz
                     ItemsTable.AddEntry(MundaneItemsTable, 95);
                         MundaneItemsTable.rdsCount = 1; //maximum of 1 mundane item
                     ItemsTable.AddEntry(MagicItemsTable, 100);
-                            MinorMagicTable.rdsCount = 1; //maximum of 1 Minor Magic item
+                            //MinorMagicTable.rdsCount = 1; //maximum of 1 Minor Magic item
 
-                    MagicItemsTable.AddEntry(GenerateItem("Minor"),1,false,true,true);
-                    MagicItemsTable.rdsCount = 1;
-                    MagicItemsTable.rdsAlways = true;
+                   
+                     MagicItemsTable.AddEntry(GenerateItem("Minor"),0,true,false,true);
+                    //MagicItemsTable.rdsCount = 1;
+                    //MagicItemsTable.rdsAlways = true;
 
-                    MagicItemsTable.AddEntry(GenerateItem("Minor"),1,false,true,true);
-                    MagicItemsTable.rdsCount = 1;
-                    MagicItemsTable.rdsAlways = true;
+                    //MagicItemsTable.AddEntry(GenerateItem("Minor"),1,false,true,true);
+                    //MagicItemsTable.rdsCount = 1;
+                    //MagicItemsTable.rdsAlways = true;
                     
                     GoodsTable.AddEntry(new Item(),90);
                     GoodsTable.AddEntry(GemTable,95);
@@ -468,9 +471,9 @@ namespace Lewtz
                 case 2:
                     Coins.AddEntry(new Item(),13);
                     Coins.AddEntry(new Item("Coin","Copper Piece",   RollDice(1, 10, 1000)),23); //1d10*1000 cp
-                    Coins.AddEntry(new Item("Coin","Silver Piece",   RollDice(2, 10, 100)),43); //2d10*100 SP
-                    Coins.AddEntry(new Item("Coin","Gold Piece",     RollDice(4, 10, 10)),95); //4d10*10 GP
-                    Coins.AddEntry(new Item("Coin","Platinum Piece", RollDice(2, 8, 10)),100); //2d8*10 PP
+                    Coins.AddEntry(new Item("Coin","Silver Piece",   RollDice(2, 10, 100)), 43); //2d10*100 SP
+                    Coins.AddEntry(new Item("Coin","Gold Piece",     RollDice(4, 10, 10)),  95); //4d10*10 GP
+                    Coins.AddEntry(new Item("Coin","Platinum Piece", RollDice(2, 8,  10)),  100); //2d8*10 PP
 
                     ItemsTable.AddEntry(new Item(),49); //give nothing on this roll
                     ItemsTable.AddEntry(MundaneItemsTable, 85);
@@ -481,6 +484,8 @@ namespace Lewtz
                     MagicItemsTable.rdsCount = 1;
                     MagicItemsTable.rdsAlways = true;
                         //MinorMagicTable.rdsCount = 1; //maximum of 1 Minor Magic item
+
+                    //Med
 
                     GoodsTable.AddEntry(new Item(),81);
                     GoodsTable.AddEntry(GemTable,95);
@@ -899,17 +904,18 @@ namespace Lewtz
             string itemType = "";
             int cost = 0; //the total cost (SHOULD take into account non-enhancement bonus abilities)
             int bonus = 0; //used to track bonuses for dynamic cost formulas
-            MagicItem magicRolledItem = new MagicItem(""); //used to swap beteen minor/medium/major item tables
+            MagicItem magicRolledItem = new MagicItem(""); //used to swap between minor/medium/major item tables
             Item rolledItem = new Item();
             
             int rollsLeft = 1;
 
+            #region First Loop
 
             do
             {
                 switch (rank)
                 {
-                        //first, roll what TYPE of item this is (ring, weapon, armor, staff, etc)
+                    //first, roll what TYPE of item this is (ring, weapon, armor, staff, etc)
                     case "Minor":
                         switch (magicRolledItem.GetItemType())
                         {
@@ -919,11 +925,12 @@ namespace Lewtz
                             case "Weapon Ability":
                                 magicRolledItem = (MagicItem)MinorWeaponsTable.rdsResult.Single(); ///NOOOOOOOOOO INSTEAD DO ITEMTYPE (STRING)?
                                 break;
-                            case "Magic Shield":
+                            case "Shield Ability":
                                 magicRolledItem = (MagicItem)MinorShieldsTable.rdsResult.Single(); ///NOOOOOOOOOO INSTEAD DO ITEMTYPE (STRING)?
                                 break;
                             default:
                                 magicRolledItem = (MagicItem)MinorMagicTable.rdsResult.Single();
+                                textBox2.Text += "\r\nMINOR DEFAULT -> " + magicRolledItem.GetItemType();
                                 break;
                         }
                         break;
@@ -959,7 +966,8 @@ namespace Lewtz
                         break;
                 }
 
-                cost = magicRolledItem.GetCost(); //for mostly non-ability things
+                cost = magicRolledItem.GetCost(); //for mostly non-ability things (ability is currently zero cost)
+                textBox2.Text += magicRolledItem.GetCost() + "    bitch titteh \r\n";
 
                 //then, do stuff based on what this TYPE is
                 switch (magicRolledItem.GetItemType())
@@ -978,10 +986,7 @@ namespace Lewtz
                         {
                             bonus += magicRolledItem.GetBonus();
                         }
-                        else
-                        {
-                            cost += magicRolledItem.GetCost();
-                        }
+                        cost += magicRolledItem.GetCost();
                         break;
                     case "Magic Shield":
                         if (rolledItem.ToString() == "Nothing") //magic shield with no abilities
@@ -989,14 +994,16 @@ namespace Lewtz
                             rolledItem = (Item)Shields.rdsResult.Single();
                             cost = rolledItem.GetCost();
                         }
-                        newName = magicRolledItem.ToString() + " " + rolledItem.ToString() + abilities;
+                         newName = magicRolledItem.ToString() + " " + rolledItem.ToString() + abilities;
                         if (magicRolledItem.GetBonus() >= 1 && magicRolledItem.GetBonus() < 11) 
                         {  //TODO: If >COST< is between 1 and 11, this is a BONUS.
                             bonus += magicRolledItem.GetBonus();  
                         }
                         //else
-                        //{ //HEY DERPFACE: The cost is ALWAYS supposed to be added! THIS IS THE PROBLEM. FIX IT BITCH.
-                            cost += magicRolledItem.GetCost();
+                        //
+                        cost += magicRolledItem.GetCost();
+
+                        //textBox2.Text += magicRolledItem.GetCost() + "   \r\n";
                         //}
                         break;
                     case "Magic Weapon":
@@ -1040,21 +1047,25 @@ namespace Lewtz
                             textBox2.Text += "blarg! " + cost;
                         }
                         abilities += AddAbilities(rank, itemType);
-                        rollsLeft++;
+                        //rollsLeft++;
                         break;
                     default:
                         break;
                 }
 
             rollsLeft--;
+
             } while (rollsLeft > 0);
+
+            #endregion
+
             //return newName;
 
             if (magicRolledItem.GetItemType() == "Magic Weapon")
             {
                 cost += (int)Math.Pow(bonus, 2) * 200000 + 30000; //bonus^2 * 2000 gold
             }
-            if (magicRolledItem.GetItemType() == "Magic Armor")
+            if (magicRolledItem.GetItemType() == "Magic Armor" || magicRolledItem.GetItemType() == "Magic Shield")
             {
                 cost += (int)Math.Pow(bonus, 2) * 100000 + 15000; //bonus^2 * 1000 gold
             }
@@ -1073,14 +1084,14 @@ namespace Lewtz
                     switch(itemType)
                     {
                         case "Armor Ability":
-                            Abilities = MinorArmorAbilitiesTable;
+                            Abilities = MinorArmorAbilities;
                             break;
                         case "Melee Weapon":
                         case "Uncommon Melee Weapon":
-                            Abilities = MinorMeleeWeaponsAbilitiesTable;
+                            Abilities = MinorMeleeWeaponsAbilities;
                             break;
                         case "Ranged Weapon":
-                            Abilities = MinorRangedWeaponsAbilitiesTable;
+                            Abilities = MinorRangedWeaponsAbilities;
                             break;
                         default:
                             return ""; //something went wrong if it gets here

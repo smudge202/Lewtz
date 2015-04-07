@@ -26,5 +26,7 @@ namespace rds
 		{
 			return (IRDSObject)Activator.CreateInstance(this.GetType());
 		}
+
+
 	}
 }

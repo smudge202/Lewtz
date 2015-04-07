@@ -7,7 +7,7 @@ using rds;
 
 namespace Lewtz
 {
-    class Item : RDSCreatableObject
+    class Item : RDSCreatableObject  //Change this to RDSObject and change magic item to RDSCreatable?
     {
         private string ItemType = ""; //weapon, etc
         private string ItemName; //name of the weapon; ie Dagger, etc
