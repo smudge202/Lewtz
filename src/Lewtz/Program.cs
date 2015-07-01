@@ -6,9 +6,6 @@ namespace Lewtz
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -16,6 +13,7 @@ namespace Lewtz
 			app.UseServices(services =>
 			{
 				services.AddServices();
+				services.AddForms();
 			});
 			app.UseLewtz();
 			app.Execute();

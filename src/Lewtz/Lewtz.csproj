@@ -137,6 +137,7 @@
     <Compile Include="RDSRandom.cs" />
     <Compile Include="RDSTable.cs" />
     <Compile Include="RDSValue.cs" />
+    <Compile Include="ServiceExtensions.cs" />
     <Compile Include="WindowsFormsApplication.cs" />
     <EmbeddedResource Include="Lewtz.resx">
       <DependentUpon>Lewtz.cs</DependentUpon>
