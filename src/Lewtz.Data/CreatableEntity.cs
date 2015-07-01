@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Reflection;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace rds
+namespace Lewtz.Data
 {
 	/// <summary>
 	/// This class is a special derived version of an RDSObject.
@@ -14,7 +10,7 @@ namespace rds
 	/// If it is implemented, this object's CreateInstance method is called, and with this tweak it is possible
 	/// to enter completely new instances into the result set at the moment they are hit.
 	/// </summary>
-	public class RDSCreatableObject : RDSObject, IRDSObjectCreator
+	public class CreatableEntity : Entity
 	{
 		/// <summary>
 		/// Creates an instance of the object where this method is implemented in.
@@ -22,11 +18,9 @@ namespace rds
 		/// Override (without calling base.CreateInstance()) to instanciate more complex constructors.
 		/// </summary>
 		/// <returns>A new instance of an object of the type where this method is implemented</returns>
-		public virtual IRDSObject rdsCreateInstance()
+		public virtual Entity CreateInstance()
 		{
-			return (IRDSObject)Activator.CreateInstance(this.GetType());
+			return (Entity)Activator.CreateInstance(GetType());
 		}
-
-
 	}
 }

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using rds;
 
-namespace Lewtz
+namespace Lewtz.Data
 {
     class MagicItem : Item
     {
@@ -32,6 +31,7 @@ namespace Lewtz
         {
             return Cost;
         }
+
         public override string GetItemType()
         {
             return ItemType;
@@ -41,6 +41,7 @@ namespace Lewtz
         {
             return ItemName;
         }
+
         public int GetBonus()
         {
             return totalBonus;
@@ -50,7 +51,7 @@ namespace Lewtz
             totalBonus = bonus;
         }
 
-        public override IRDSObject rdsCreateInstance()
+        public override Entity CreateInstance()
         {
             return new MagicItem(ItemType, ItemName, Cost, totalBonus);
         }

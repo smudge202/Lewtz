@@ -1,22 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO; //streamreader
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using rds;
 
 namespace Lewtz
 {
     public partial class FormLewtz : Form
     {
-        public FormLewtz()
+		private readonly Services.GenerateLoot _loot;
+
+		private FormLewtz()
+		{
+			InitializeComponent();
+		}
+
+        public FormLewtz(Services.GenerateLoot loot)
+			: this()
         {
-            InitializeComponent(); 
-            LoadTables();
+			if (loot == null)
+				throw new ArgumentNullException("loot");
+			_loot = loot;
         }
         private int hoardCount = 0;
         private double CoinMultiplier = 1;
@@ -25,119 +27,8 @@ namespace Lewtz
 
         Random rand = new Random(); //used for calculating dice roll values
 
-
         //FIX THIS SHIT. CREATE A NEW CLASS FOR EVERY TABLE TYPE? -> TreasureTable : RDSTable
         RDSTable TreasureTable = new RDSTable(); //used for top-tier random drops of tons of subtables
-
-        //If the table ends in (-Table), the table includes subtables (ItemTable include minor, medium, etc)
-        //Entries NOT ending in (-Table) are loaded from files
-        #region TABLE DECLARATIONS
-
-        private RDSTable Coins = new RDSTable(); //change this to something else?
-
-        #region GOODS TABLE
-        private RDSTable GoodsTable = new RDSTable(); //GoodsTable : RDSTable -> load the tabbed thigns into this table
-
-            private RDSTable ArtTable = new RDSTable();
-
-            private RDSTable GemTable = new RDSTable();
-                private RDSTable LowestGemTable =  new RDSTable();
-                private RDSTable LowerGemTable =   new RDSTable();
-                private RDSTable LowGemTable =     new RDSTable();
-                private RDSTable HighGemTable =    new RDSTable();  //CHANGE THEM ALL
-                private RDSTable HigherGemTable =  new RDSTable();
-                private RDSTable HighestGemTable = new RDSTable();
-        #endregion
-
-        #region ITEMSTABLE
-        private RDSTable ItemsTable = new RDSTable();
-            private RDSTable MundaneItemsTable = new RDSTable();
-                private RDSTable ToolsGear = new RDSTable();
-
-                private RDSTable AlchemicalItemsTable = new RDSTable();
-
-                private RDSTable ArmorTable = new RDSTable();
-                    private RDSTable DarkwoodShields = new RDSTable();
-                    private RDSTable Shields = new RDSTable();
-
-                private RDSTable WeaponsTable = new RDSTable();
-                    private RDSTable CommonWeapons = new RDSTable();
-                    private RDSTable UncommonWeapons = new RDSTable();
-                    private RDSTable CommonRangedWeapons = new RDSTable();
-                    private RDSTable UncommonRangedWeapons = new RDSTable(); ///CHHAAAANNNGEEEE THESSEE
-
-            private RDSTable MagicItemsTable = new RDSTable(); //used to store dynamically created weapons and armor
-
-                private RDSTable MinorMagicTable = new RDSTable();
-                    private RDSTable MinorArmorTable = new RDSTable();
-                        private RDSTable MinorSpecificArmors = new RDSTable();
-                        private RDSTable MinorArmorAbilities = new RDSTable();
-
-                    private RDSTable MinorShieldsTable = new RDSTable();
-                        private RDSTable MinorSpecificShields = new RDSTable();
-                        private RDSTable MinorShieldAbilities = new RDSTable();
-                        //private RDSTable MinorShieldAbilitiesTable = new RDSTable();
-
-                    private RDSTable MinorWeaponsTable = new RDSTable();
-                        private RDSTable MinorSpecificWeapons = new RDSTable();
-                        private RDSTable MinorMeleeWeaponsAbilities = new RDSTable();
-                        private RDSTable MinorRangedWeaponsAbilities = new RDSTable();
-
-                    private RDSTable MinorPotionsTable =       new RDSTable();
-                    private RDSTable MinorRingsTable =         new RDSTable();
-                    private RDSTable MinorRodsTable =          new RDSTable();
-                    private RDSTable MinorScrollsTable =       new RDSTable();
-                    private RDSTable MinorStaffTable =         new RDSTable();
-                    private RDSTable MinorWandsTable =         new RDSTable();
-                    private RDSTable MinorWondrousItemsTable = new RDSTable();
-                    
-                private RDSTable MediumMagicTable = new RDSTable();
-                    private RDSTable MediumSpecificArmors = new RDSTable();
-                    private RDSTable MediumArmorTable = new RDSTable();
-                    private RDSTable MediumArmorAbilitiesTable = new RDSTable();
-
-                    private RDSTable MediumShieldsTable = new RDSTable();
-                        private RDSTable MediumSpecificShields = new RDSTable();
-                        private RDSTable MediumShieldAbilities = new RDSTable();
-                        private RDSTable MediumShieldAbilitiesTable = new RDSTable();
-
-                    private RDSTable MediumWeaponsTable = new RDSTable();
-                        private RDSTable MediumSpecificWeapons = new RDSTable();
-                        private RDSTable MediumMeleeWeaponsAbilitiesTable = new RDSTable();
-                        private RDSTable MediumRangedWeaponsAbilitiesTable = new RDSTable();
-                    private RDSTable MediumPotionsTable = new RDSTable();
-                    private RDSTable MediumRingsTable = new RDSTable();
-                    private RDSTable MediumRodsTable = new RDSTable();
-                    private RDSTable MediumScrollsTable = new RDSTable();
-                    private RDSTable MediumStaffsTable = new RDSTable();
-                    private RDSTable MediumWandsTable = new RDSTable();
-                    private RDSTable MediumWondrousItemsTable = new RDSTable();
-                    
-                private RDSTable MajorMagicTable = new RDSTable();
-                    private RDSTable MajorArmorTable = new RDSTable();
-                        private RDSTable MajorSpecificArmors = new RDSTable();
-                        private RDSTable MajorArmorAbilitiesTable = new RDSTable();
-
-                    private RDSTable MajorShieldsTable = new RDSTable();
-                        private RDSTable MajorSpecificShields = new RDSTable();
-                        private RDSTable MajorShieldAbilities = new RDSTable();
-                        private RDSTable MajorShieldAbilitiesTable = new RDSTable();
-
-                    private RDSTable MajorWeaponsTable = new RDSTable();
-                        private RDSTable MajorSpecificWeapons = new RDSTable();
-                        private RDSTable MajorMeleeWeaponsAbilitiesTable = new RDSTable();
-                        private RDSTable MajorRangedWeaponsAbilitiesTable = new RDSTable();
-                    private RDSTable MajorPotionsTable = new RDSTable();
-                    private RDSTable MajorRingsTable = new RDSTable();
-                    private RDSTable MajorRodsTable = new RDSTable();
-                    private RDSTable MajorScrollsTable = new RDSTable();
-                    private RDSTable MajorStaffsTable = new RDSTable();
-                    private RDSTable MajorWandsTable = new RDSTable();
-                    private RDSTable MajorWondrousItemsTable = new RDSTable();
-                #endregion //ITEMSTABLE 
-
-        #endregion //DECLARATIONS
-
 
        private void btnAddTreasure_Click(object sender, EventArgs e)
         {
@@ -159,10 +50,62 @@ namespace Lewtz
             GroupAddRemove(hoardCount, false); //make the last set of buttons go away
             hoardCount--;
         }
+
+        private void GroupAddRemove(int hoard, bool bAddRemove)
+        {
+            switch (hoard)
+            {
+                case 1:
+                    pnlInput1.Visible = bAddRemove;
+                    btnRemoveTreasure.Enabled = bAddRemove;
+                    break;
+                case 2:
+                    pnlInput2.Visible = bAddRemove;
+                    break;
+                case 3:
+                    pnlInput3.Visible = bAddRemove;
+                    break;
+                case 4:
+                    pnlInput4.Visible = bAddRemove;
+                    break;
+                case 5:
+                    pnlInput5.Visible = bAddRemove;
+                    break;
+                case 6:
+                    pnlInput6.Visible = bAddRemove;
+                    break;
+                case 7:
+                    pnlInput7.Visible = bAddRemove;
+                    break;
+                case 8:
+                    pnlInput8.Visible = bAddRemove;
+                    break;
+                case 9:
+                    pnlInput9.Visible = bAddRemove;
+                    break;
+                default:
+                    if (bAddRemove == true)
+                    {
+                        textBox1.Text = "Can't add any more treasure hoards!";
+                    }
+                    break;
+            }
+        }
         
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void lootTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Show the dialog and get result.
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK) // Test result.
+            {
+                textBox1.Text = openFileDialog1.FileName;
+            }
+            //textBox1.Text = result.ToString(); // <-- For debugging use.
         }
 
         private void GenerateLootButton_Click(object sender, EventArgs e)
@@ -1204,58 +1147,6 @@ namespace Lewtz
                 TotalCount += rand.Next(1,dicesides + 1); //from 1 to (dicesides+1) excluding dicesides+1
             }
             return TotalCount * multiplier;
-        }
-
-        private void GroupAddRemove(int hoard, bool bAddRemove)
-        {
-            switch (hoard)
-            {
-                case 1:
-                    pnlInput1.Visible = bAddRemove;
-                    btnRemoveTreasure.Enabled = bAddRemove;
-                    break;
-                case 2:
-                    pnlInput2.Visible = bAddRemove;
-                    break;
-                case 3:
-                    pnlInput3.Visible = bAddRemove;
-                    break;
-                case 4:
-                    pnlInput4.Visible = bAddRemove;
-                    break;
-                case 5:
-                    pnlInput5.Visible = bAddRemove;
-                    break;
-                case 6:
-                    pnlInput6.Visible = bAddRemove;
-                    break;
-                case 7:
-                    pnlInput7.Visible = bAddRemove;
-                    break;
-                case 8:
-                    pnlInput8.Visible = bAddRemove;
-                    break;
-                case 9:
-                    pnlInput9.Visible = bAddRemove;
-                    break;
-                default:
-                    if (bAddRemove == true)
-                    {
-                        textBox1.Text = "Can't add any more treasure hoards!";
-                    }
-                    break;
-            }
-        }
-
-        private void lootTableToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Show the dialog and get result.
-            DialogResult result = openFileDialog1.ShowDialog();
-            if (result == DialogResult.OK) // Test result.
-            {
-                textBox1.Text = openFileDialog1.FileName;
-            }
-            //textBox1.Text = result.ToString(); // <-- For debugging use.
         }
     }
 }

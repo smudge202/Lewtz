@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO; //streamreader
-using rds;
-
-namespace Lewtz
+﻿namespace Lewtz.Data
 {
-    class Item : RDSCreatableObject  //Change this to RDSObject and change magic item to RDSCreatable?
+    class Item : CreatableEntity
     {
         private string ItemType = ""; //weapon, etc
         private string ItemName; //name of the weapon; ie Dagger, etc
@@ -38,6 +31,7 @@ namespace Lewtz
             ItemName = name;
             Cost = cost;
         }
+
         //usually called in LoadFromFile in RDSTable interface
         public Item(string type, string name, int cost, int probability)
         {
@@ -66,7 +60,7 @@ namespace Lewtz
             return ItemName;
         }
 
-        public override IRDSObject rdsCreateInstance()
+        public override Entity CreateInstance()
         {
             return new Item(ItemType,ItemName,Cost);
         }

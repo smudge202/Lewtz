@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Security.Cryptography;
 
-namespace rds
+namespace Lewtz.Data
 {
 	/// <summary>
 	/// RDS Randomizer implementation. This is a static class and should replace the use of .net's Random class.
@@ -13,7 +11,7 @@ namespace rds
 	/// You may replace the randomizer used by calling the SetRandomizer method with any object derived from Random.
 	/// Supply NULL to SetRandomizer to reset it to the default RNGCryptoServiceProvider.
 	/// </summary>
-	public static class RDSRandom
+	public static class Randomizer
 	{
 		#region CRYPTOGRAPHIC IMPLEMENTATION (DISABLED CODE - FOR FUTURE USE - DID NOT WANT TO DELETE IT)
 		//private RNGCryptoServiceProvider rnd = new RNGCryptoServiceProvider();
@@ -37,7 +35,7 @@ namespace rds
 		#region TYPE INITIALIZER
 		private static Random rnd = null;
 
-		static RDSRandom()
+		static Randomizer()
 		{
 			SetRandomizer(null);
 		}

@@ -1,4 +1,5 @@
-﻿using Microsoft.Framework.DependencyInjection;
+﻿using Lewtz.Data;
+using Microsoft.Framework.DependencyInjection;
 using System.Collections.Generic;
 
 namespace Lewtz.Services
@@ -8,14 +9,15 @@ namespace Lewtz.Services
 		public static IServiceCollection AddServices(this IServiceCollection services)
 		{
 			services.TryAdd(DefaultServices);
-			return services;
+			return services
+				.AddDataServices();
 		}
 
 		public static IEnumerable<ServiceDescriptor> DefaultServices
 		{
 			get
 			{
-				yield break;
+				yield return ServiceDescriptor.Transient<GenerateLoot, DefaultLootGenerator>();
 			}
 		}
 	}

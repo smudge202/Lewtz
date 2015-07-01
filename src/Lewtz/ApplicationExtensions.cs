@@ -10,7 +10,11 @@ namespace Lewtz
 		{
 			app.OnExecute(() =>
 			{
-				Application.Run(app.ApplicationServices.GetService<FormLewtz>());
+				app
+					.ApplicationServices
+					.GetService<Data.SeedData>()
+					.Generate();
+					Application.Run(app.ApplicationServices.GetService<FormLewtz>());
             });
 		}
 	}

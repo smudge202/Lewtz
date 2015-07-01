@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace rds
+namespace Lewtz.Data
 {
-	#region RESULTEVENTARGS & DELEGATE
 	/// <summary>
 	/// EventArgs for the PostResultEvaluation event
 	/// </summary>
@@ -15,7 +12,7 @@ namespace rds
 		/// Initializes a new instance of the <see cref="ResultEventArgs"/> class.
 		/// </summary>
 		/// <param name="result">The result.</param>
-		public ResultEventArgs(IEnumerable<IRDSObject> result)
+		public ResultEventArgs(IEnumerable<Entity> result)
 		{
 			Result = result;
 		}
@@ -23,7 +20,7 @@ namespace rds
 		/// <summary>
 		/// Gets the result.
 		/// </summary>
-		public IEnumerable<IRDSObject> Result { get; private set; }
+		public IEnumerable<Entity> Result { get; private set; }
 	}
 
 	/// <summary>
@@ -32,5 +29,4 @@ namespace rds
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The <see cref="rds.ResultEventArgs"/> instance containing the event data.</param>
 	public delegate void ResultEventHandler(object sender, ResultEventArgs e);
-	#endregion
 }

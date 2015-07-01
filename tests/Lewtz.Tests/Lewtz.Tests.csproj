@@ -66,12 +66,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LewtzTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Lewtz.Services\Lewtz.Services.csproj">
+      <Project>{a766e80b-c741-4572-8725-8186e9395b1a}</Project>
+      <Name>Lewtz.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Lewtz\Lewtz.csproj">
       <Project>{cdddfbfe-f507-4b29-8342-946c2cfb3667}</Project>
       <Name>Lewtz</Name>

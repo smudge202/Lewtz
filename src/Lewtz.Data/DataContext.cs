@@ -1,0 +1,71 @@
+﻿namespace Lewtz.Data
+{
+	public interface DataContext
+	{
+		Table AlchemicalItemsTable { get; }
+		Table ArmorTable { get; }
+		Table CommonRangedWeapons { get; }
+		Table CommonWeapons { get; }
+		Table DarkwoodShields { get; }
+		Table GemTable { get; }
+		Table HigherGemTable { get; }
+		Table HighestGemTable { get; }
+		Table HighGemTable { get; }
+		Table LowerGemTable { get; }
+		Table LowestGemTable { get; }
+		Table LowGemTable { get; }
+		Table MajorArmorAbilitiesTable { get; }
+		Table MajorArmorTable { get; }
+		Table MajorMagicTable { get; }
+		Table MajorMeleeWeaponsAbilitiesTable { get; }
+		Table MajorPotionsTable { get; }
+		Table MajorRangedWeaponsAbilitiesTable { get; }
+		Table MajorRingsTable { get; }
+		Table MajorRodsTable { get; }
+		Table MajorScrollsTable { get; }
+		Table MajorSpecificArmors { get; }
+		Table MajorSpecificShields { get; }
+		Table MajorSpecificWeapons { get; }
+		Table MajorStaffsTable { get; }
+		Table MajorWandsTable { get; }
+		Table MajorWeaponsTable { get; }
+		Table MajorWondrousItemsTable { get; }
+		Table MediumArmorAbilitiesTable { get; }
+		Table MediumArmorTable { get; }
+		Table MediumMagicTable { get; }
+		Table MediumMeleeWeaponsAbilitiesTable { get; }
+		Table MediumPotionsTable { get; }
+		Table MediumRangedWeaponsAbilitiesTable { get; }
+		Table MediumRingsTable { get; }
+		Table MediumRodsTable { get; }
+		Table MediumScrollsTable { get; }
+		Table MediumShieldAbilitiesTable { get; }
+		Table MediumSpecificArmors { get; }
+		Table MediumSpecificShields { get; }
+		Table MediumSpecificWeapons { get; }
+		Table MediumStaffsTable { get; }
+		Table MediumWandsTable { get; }
+		Table MediumWeaponsTable { get; }
+		Table MediumWondrousItemsTable { get; }
+		Table MinorArmorAbilities { get; }
+		Table MinorArmorTable { get; }
+		Table MinorMagicTable { get; }
+		Table MinorMeleeWeaponsAbilities { get; }
+		Table MinorPotionsTable { get; }
+		Table MinorRangedWeaponsAbilities { get; }
+		Table MinorRingsTable { get; }
+		Table MinorScrollsTable { get; }
+		Table MinorShieldAbilities { get; }
+		Table MinorSpecificArmors { get; }
+		Table MinorSpecificShields { get; }
+		Table MinorSpecificWeapons { get; }
+		Table MinorWandsTable { get; }
+		Table MinorWeaponsTable { get; }
+		Table MinorWondrousItemsTable { get; }
+		Table MundaneItemsTable { get; }
+		Table Shields { get; }
+		Table ToolsGear { get; }
+		Table UncommonWeapons { get; }
+		Table WeaponsTable { get; }
+	}
+}

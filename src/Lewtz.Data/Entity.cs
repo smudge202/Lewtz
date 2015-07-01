@@ -1,42 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace rds
+namespace Lewtz.Data
 {
 	/// <summary>
-	/// This class holds a single RDS value.
-	/// It's a generic class to allow the developer to add any type to a RDSTable.
-	/// T can of course be either a value type or a reference type, so it's possible,
-	/// to add RDSValue objects that contain a reference type, too.
+	/// Base implementation of the IRDSObject interface.
+	/// This class only implements the interface and provides all events required.
+	/// Most methods are virtual and ready to be overwritten. Unless there is a good reason,
+	/// do not implement IRDSObject for yourself, instead derive your base classes that shall interact
+	/// in *any* thinkable way as a result source with any RDSTable from this class.
 	/// </summary>
-	/// <typeparam name="T">The type of the value</typeparam>
-	public class RDSValue<T> : IRDSValue<T>
+	public class Entity
 	{
-		
-		#region CONSTRUCTOR
+		#region CONSTRUCTORS
 		/// <summary>
-		/// Initializes a new instance of the <see cref="RDSValue&lt;T&gt;"/> class.
-		/// The Unique and Always flags are set to (default) false with this constructor, and Enabled is set to true.
+		/// Initializes a new instance of the <see cref="RDSObject"/> class.
 		/// </summary>
-		/// <param name="value">The value.</param>
-		/// <param name="probability">The probability.</param>
-		public RDSValue(T value, double probability)
-			: this(value, probability, false, false, true)
+		public Entity()
+			: this(0)
 		{ }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="RDSValue&lt;T&gt;"/> class.
+		/// Initializes a new instance of the <see cref="RDSObject"/> class.
 		/// </summary>
-		/// <param name="value">The value.</param>
 		/// <param name="probability">The probability.</param>
-		/// <param name="unique">if set to <c>true</c> [unique].</param>
-		/// <param name="always">if set to <c>true</c> [always].</param>
-		/// <param name="enabled">if set to <c>true</c> [enabled].</param>
-		public RDSValue(T value, double probability, bool unique, bool always, bool enabled)
+		public Entity(double probability)
+			: this(probability, false, false, true) 
+		{ }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="RDSObject"/> class.
+		/// </summary>
+		/// <param name="probability">The probability.</param>
+		/// <param name="unique">if set to <c>true</c> this object can only occur once per result.</param>
+		/// <param name="always">if set to <c>true</c> [always] this object will appear always in the result.</param>
+		/// <param name="enabled">if set to <c>false</c> [enabled] this object will never be part of the result (even if it is set to always=true!).</param>
+		public Entity(double probability, bool unique, bool always, bool enabled)
 		{
-			mvalue = value;
 			rdsProbability = probability;
 			rdsUnique = unique;
 			rdsAlways = always;
@@ -88,18 +87,6 @@ namespace rds
 		}
 		#endregion
 
-		#region IRDSValue<T> Members
-		/// <summary>
-		/// The value of this object
-		/// </summary>
-		public virtual T rdsValue 
-		{
-			get { return mvalue; }
-			set { mvalue = value; }
-		}
-		private T mvalue;
-		#endregion
-
 		#region IRDSObject Members
 		/// <summary>
 		/// Gets or sets the probability for this object to be (part of) the result
@@ -126,7 +113,7 @@ namespace rds
 		/// Gets or sets the table this Object belongs to.
 		/// Note to inheritors: This property has to be auto-set when an item is added to a table via the AddEntry method.
 		/// </summary>
-		public RDSTable rdsTable { get; set; }
+		public Table rdsTable { get; set; }
 		#endregion
 
 		#region TOSTRING
@@ -150,13 +137,10 @@ namespace rds
 		public string ToString(int indentationlevel)
 		{
 			string indent = "".PadRight(4 * indentationlevel, ' ');
-			
-			string valstr = "(null)";
-			if (rdsValue != null)
-				valstr = rdsValue.ToString();
-				return string.Format(indent + "(RDSValue){0} \"{1}\",Prob:{2},UAE:{3}{4}{5}", 
-					this.GetType().Name, valstr, rdsProbability,
-					(rdsUnique ? "1" : "0"), (rdsAlways ? "1" : "0"), (rdsEnabled ? "1" : "0"));
+
+			return string.Format(indent + "(RDSObject){0} Prob:{1},UAE:{2}{3}{4}",
+				this.GetType().Name, rdsProbability,
+				(rdsUnique ? "1" : "0"), (rdsAlways ? "1" : "0"), (rdsEnabled ? "1" : "0"));
 		}
 		#endregion
 	}
