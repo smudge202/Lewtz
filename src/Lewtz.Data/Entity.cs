@@ -134,7 +134,7 @@ namespace Lewtz.Data
 		/// <returns>
 		/// A <see cref="System.String"/> that represents this instance.
 		/// </returns>
-		public string ToString(int indentationlevel)
+		public virtual string ToString(int indentationlevel)
 		{
 			string indent = "".PadRight(4 * indentationlevel, ' ');
 

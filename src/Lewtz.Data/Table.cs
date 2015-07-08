@@ -57,49 +57,6 @@ namespace Lewtz.Data
 		}
 		#endregion
 
-		#region EVENTS
-		/// <summary>
-		/// Occurs before all the probabilities of all items of the current RDSTable are summed up together.
-		/// This is the moment to modify any settings immediately before a result is calculated.
-		/// </summary>
-		public event EventHandler rdsPreResultEvaluation;
-		/// <summary>
-		/// Occurs when this RDSObject has been hit by the Result procedure.
-		/// (This means, this object will be part of the result set).
-		/// </summary>
-		public event EventHandler rdsHit;
-		/// <summary>
-		/// Occurs after the result has been calculated and the result set is complete, but before
-		/// the RDSTable's Result method exits.
-		/// </summary>
-		public event ResultEventHandler rdsPostResultEvaluation;
-
-		/// <summary>
-		/// Raises the <see cref="E:PreResultEvaluation"/> event.
-		/// </summary>
-		/// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-		public virtual void OnRDSPreResultEvaluation(EventArgs e)
-		{
-			if (rdsPreResultEvaluation != null) rdsPreResultEvaluation(this, e);
-		}
-		/// <summary>
-		/// Raises the <see cref="E:Hit"/> event.
-		/// </summary>
-		/// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-		public virtual void OnRDSHit(EventArgs e)
-		{
-			if (rdsHit != null) rdsHit(this, e);
-		}
-		/// <summary>
-		/// Raises the <see cref="E:PostResultEvaluation"/> event.
-		/// </summary>
-		/// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-		public virtual void OnRDSPostResultEvaluation(ResultEventArgs e)
-		{
-			if (rdsPostResultEvaluation != null) rdsPostResultEvaluation(this, e);
-		}
-		#endregion
-
 		#region COUNT
 		/// <summary>
 		/// The maximum number of entries expected in the Result. The final count of items in the result may be lower
@@ -291,6 +248,7 @@ namespace Lewtz.Data
 				if (o.rdsUnique)
 					uniquedrops.Add(o);
 
+				// TODO: CS0184: https://msdn.microsoft.com/en-us/library/230kb9yt(v=vs.90).aspx
 				if (!(o is NullValue))
 				{
 					if (o is Table)
@@ -407,35 +365,6 @@ namespace Lewtz.Data
 		}
 		#endregion
 
-		#region Entity Members
-		/// <summary>
-		/// Gets or sets the probability for this object to be (part of) the result
-		/// </summary>
-		public double rdsProbability { get; set; }
-		/// <summary>
-		/// Gets or sets whether this object may be contained only once in the result set
-		/// </summary>
-		public bool rdsUnique { get; set; }
-		/// <summary>
-		/// Gets or sets whether this object will always be part of the result set
-		/// (Probability is ignored when this flag is set to true)
-		/// </summary>
-		public bool rdsAlways { get; set; }
-		/// <summary>
-		/// Gets or sets a value indicating whether this <see cref="Entity"/> is enabled.
-		/// Only enabled entries can be part of the result of a RDSTable.
-		/// </summary>
-		/// <value>
-		///   <c>true</c> if enabled; otherwise, <c>false</c>.
-		/// </value>
-		public bool rdsEnabled { get; set; }
-		/// <summary>
-		/// Gets or sets the table this Object belongs to.
-		/// Note to inheritors: This property has to be auto-set when an item is added to a table via the AddEntry method.
-		/// </summary>
-		public Table rdsTable { get; set; }
-		#endregion
-
 		#region TOSTRING
 		/// <summary>
 		/// Returns a <see cref="System.String"/> that represents this instance.
@@ -455,7 +384,7 @@ namespace Lewtz.Data
 		/// <returns>
 		/// A <see cref="System.String"/> that represents this instance.
 		/// </returns>
-		public string ToString(int indentationlevel)
+		public override string ToString(int indentationlevel)
 		{
 			string indent = "".PadRight(4 * indentationlevel, ' ');
 

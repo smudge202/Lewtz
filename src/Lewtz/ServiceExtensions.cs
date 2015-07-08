@@ -15,6 +15,7 @@ namespace Lewtz
 		{
 			get
 			{
+				yield return ServiceDescriptor.Transient<Presenters.IMainPresenter, Presenters.MainPresenter>();
 				yield return ServiceDescriptor.Transient<FormLewtz, FormLewtz>();
 			}
 		}

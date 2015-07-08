@@ -2,5 +2,6 @@
 {
 	public interface GenerateLoot
 	{
+		LootResult Generate(LootRequest request);
 	}
 }

@@ -9,6 +9,8 @@ namespace Lewtz
         [STAThread]
         static void Main()
         {
+			// This is an OWIN styled startup which gives you access
+			// to dependency injection. For when you understand DI: You're welcome. ;)
 			var app = new WindowsFormsApplication();
 			app.UseServices(services =>
 			{

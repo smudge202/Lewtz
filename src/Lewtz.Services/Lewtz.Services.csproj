@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="DefaultLootGenerator.cs" />
     <Compile Include="GenerateLoot.cs" />
+    <Compile Include="LootRequest.cs" />
+    <Compile Include="LootResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceExtensions.cs" />
   </ItemGroup>
