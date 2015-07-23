@@ -15,10 +15,5 @@ namespace Lewtz.Presenters
 		{
 			Application.Exit();
 		}
-
-		internal void GenerateLoot()
-		{
-
-		}
 	}
 }
