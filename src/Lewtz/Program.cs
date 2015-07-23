@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Compose;
+using System;
 using System.Windows.Forms;
 
 namespace Lewtz
@@ -13,9 +12,13 @@ namespace Lewtz
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLewtz());
+			var app = new WindowsFormsApplication();
+			app.UseServices(services =>
+			{
+
+			});
+			app.UseLewtz();
+			app.Execute();
         }
     }
 }
