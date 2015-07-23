@@ -1,6 +1,6 @@
 ﻿using Compose;
+using Service;
 using System;
-using System.Windows.Forms;
 
 namespace Lewtz
 {
@@ -15,7 +15,7 @@ namespace Lewtz
 			var app = new WindowsFormsApplication();
 			app.UseServices(services =>
 			{
-
+				services.AddServices();
 			});
 			app.UseLewtz();
 			app.Execute();
