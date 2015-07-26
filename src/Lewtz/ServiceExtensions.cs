@@ -14,6 +14,7 @@ namespace Lewtz
 
 		public static IEnumerable<ServiceDescriptor> GetDefaultServices()
 		{
+			yield return ServiceDescriptor.Transient<FormLewtz, FormLewtz>();
 			yield return ServiceDescriptor.Transient<MainPresenter, MainPresenter>();
 		}
 	}

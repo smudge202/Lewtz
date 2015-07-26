@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Lewtz.Presenters
 {
-	internal sealed class MainPresenter
+	public sealed class MainPresenter
 	{
 		public MainPresenter(object lootGenerator)
 		{

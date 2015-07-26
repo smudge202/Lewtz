@@ -21,7 +21,7 @@ namespace Lewtz
 			InitializeComponent();
 		}
 
-		internal FormLewtz(MainPresenter presenter)
+		public FormLewtz(MainPresenter presenter)
 			: this()
 		{
 			if (presenter == null)
@@ -29,6 +29,7 @@ namespace Lewtz
 			_presenter = presenter;
 			LoadTables();
 		}
+
 		private int hoardCount = 0;
 		private double CoinMultiplier = 1;
 		private double ItemMultiplier = 1;

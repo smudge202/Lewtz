@@ -12,6 +12,7 @@ namespace Lewtz
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
+			base.Execute();
 		}
 	}
 }

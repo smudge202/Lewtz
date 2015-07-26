@@ -15,7 +15,9 @@ namespace Lewtz
 			var app = new WindowsFormsApplication();
 			app.UseServices(services =>
 			{
-				services.AddServices();
+				services
+					.AddMvp()
+					.AddServices();
 			});
 			app.UseLewtz();
 			app.Execute();
