@@ -1,32 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO; //streamreader
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using rds;
-using Lewtz.Presenters;
 
 namespace Lewtz
 {
 	public partial class FormLewtz : Form
 	{
-		private readonly MainPresenter _presenter;
 
-		private FormLewtz()
+		public FormLewtz()
 		{
 			InitializeComponent();
-		}
-
-		public FormLewtz(MainPresenter presenter)
-			: this()
-		{
-			if (presenter == null)
-				throw new ArgumentException(nameof(presenter));
-			_presenter = presenter;
 			LoadTables();
 		}
 
@@ -213,7 +197,8 @@ namespace Lewtz
 		
 		private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
 		{
-			_presenter.Exit();
+			// TODO : Come back here this stream!
+			//_presenter.Exit();
 		}
 		
 		private void GenerateLootButton_Click(object sender, EventArgs e)

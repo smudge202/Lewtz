@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{260252EC-DB10-48C0-A856-DD534A17A387}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lewtz", "src\Lewtz\Lewtz.csproj", "{CDDDFBFE-F507-4B29-8342-946C2CFB3667}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForms", "src\Lewtz\WinForms.csproj", "{CDDDFBFE-F507-4B29-8342-946C2CFB3667}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "src\Service\Service.csproj", "{D23E04ED-66F7-470D-AAAE-B7D644A3C328}"
 EndProject
@@ -19,11 +19,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "src\Data\Data.cspro
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{43945337-BDD6-4C67-8791-ED763DA6557A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lewtz.Tests", "tests\Lewtz.Tests\Lewtz.Tests.csproj", "{625925D2-B052-43F6-8274-DC4D0321C76D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Tests", "tests\Lewtz.Tests\Presentation.Tests.csproj", "{625925D2-B052-43F6-8274-DC4D0321C76D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Tests", "tests\Data.Tests\Data.Tests.csproj", "{04424DB4-0AB0-415D-946C-88F4E1F9F527}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Tests", "tests\Service.Tests\Service.Tests.csproj", "{51D77CB3-914C-4450-ABE1-A33AC624FC73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "src\Presentation\Presentation.csproj", "{F081E64C-40E6-47BF-BD96-B31D3A51EEEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,14 @@ Global
 		{51D77CB3-914C-4450-ABE1-A33AC624FC73}.Release|Any CPU.Build.0 = Release|Any CPU
 		{51D77CB3-914C-4450-ABE1-A33AC624FC73}.Release|x86.ActiveCfg = Release|Any CPU
 		{51D77CB3-914C-4450-ABE1-A33AC624FC73}.Release|x86.Build.0 = Release|Any CPU
+		{F081E64C-40E6-47BF-BD96-B31D3A51EEEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F081E64C-40E6-47BF-BD96-B31D3A51EEEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F081E64C-40E6-47BF-BD96-B31D3A51EEEF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F081E64C-40E6-47BF-BD96-B31D3A51EEEF}.Debug|x86.Build.0 = Debug|Any CPU
+		{F081E64C-40E6-47BF-BD96-B31D3A51EEEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F081E64C-40E6-47BF-BD96-B31D3A51EEEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F081E64C-40E6-47BF-BD96-B31D3A51EEEF}.Release|x86.ActiveCfg = Release|Any CPU
+		{F081E64C-40E6-47BF-BD96-B31D3A51EEEF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,5 +100,6 @@ Global
 		{625925D2-B052-43F6-8274-DC4D0321C76D} = {43945337-BDD6-4C67-8791-ED763DA6557A}
 		{04424DB4-0AB0-415D-946C-88F4E1F9F527} = {43945337-BDD6-4C67-8791-ED763DA6557A}
 		{51D77CB3-914C-4450-ABE1-A33AC624FC73} = {43945337-BDD6-4C67-8791-ED763DA6557A}
+		{F081E64C-40E6-47BF-BD96-B31D3A51EEEF} = {260252EC-DB10-48C0-A856-DD534A17A387}
 	EndGlobalSection
 EndGlobal

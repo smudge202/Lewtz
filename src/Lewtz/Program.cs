@@ -1,5 +1,5 @@
 ﻿using Compose;
-using Service;
+using Presentation;
 using System;
 
 namespace Lewtz
@@ -16,8 +16,8 @@ namespace Lewtz
 			app.UseServices(services =>
 			{
 				services
-					.AddMvp()
-					.AddServices();
+					.AddViews()
+					.AddMvp();
 			});
 			app.UseLewtz();
 			app.Execute();

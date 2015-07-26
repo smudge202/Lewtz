@@ -9,8 +9,8 @@
     <ProjectGuid>{625925D2-B052-43F6-8274-DC4D0321C76D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lewtz.Tests</RootNamespace>
-    <AssemblyName>Lewtz.Tests</AssemblyName>
+    <RootNamespace>Presentation.Tests</RootNamespace>
+    <AssemblyName>Presentation.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -76,13 +76,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Lewtz\Lewtz.csproj">
-      <Project>{cdddfbfe-f507-4b29-8342-946c2cfb3667}</Project>
-      <Name>Lewtz</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\src\Presentation\Presentation.csproj">
+      <Project>{f081e64c-40e6-47bf-bd96-b31d3a51eeef}</Project>
+      <Name>Presentation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

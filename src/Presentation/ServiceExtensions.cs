@@ -1,11 +1,11 @@
 ﻿using Microsoft.Framework.DependencyInjection;
 using System.Collections.Generic;
 
-namespace Lewtz
+namespace Presentation
 {
-	internal static class ServiceExtensions
+	public static class ServiceExtensions
 	{
-		public static IServiceCollection AddViews(this IServiceCollection services)
+		public static IServiceCollection AddMvp(this IServiceCollection services)
 		{
 			services.TryAdd(GetDefaultServices());
 			return services;
@@ -13,7 +13,7 @@ namespace Lewtz
 
 		public static IEnumerable<ServiceDescriptor> GetDefaultServices()
 		{
-			yield return ServiceDescriptor.Transient<FormLewtz, FormLewtz>();
+			yield break;
 		}
 	}
 }
