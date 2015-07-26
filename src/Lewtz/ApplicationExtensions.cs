@@ -1,7 +1,7 @@
 ﻿using Compose;
 using Microsoft.Framework.DependencyInjection;
 
-namespace Lewtz
+namespace WinForms
 {
 	using System.Windows.Forms;
 	internal static class ApplicationExtensions

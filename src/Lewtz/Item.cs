@@ -5,7 +5,7 @@ using System.Text;
 using System.IO; //streamreader
 using rds;
 
-namespace Lewtz
+namespace WinForms
 {
     class Item : RDSCreatableObject  //Change this to RDSObject and change magic item to RDSCreatable?
     {

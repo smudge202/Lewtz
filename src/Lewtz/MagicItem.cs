@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using rds;
 
-namespace Lewtz
+namespace WinForms
 {
     class MagicItem : Item
     {

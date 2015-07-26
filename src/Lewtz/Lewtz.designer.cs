@@ -1,4 +1,4 @@
-﻿namespace Lewtz
+﻿namespace WinForms
 {
     partial class FormLewtz
     {

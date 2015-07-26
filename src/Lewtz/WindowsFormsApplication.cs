@@ -1,11 +1,8 @@
 ﻿using Compose;
 
-namespace Lewtz
+namespace WinForms
 {
-	using System;
 	using System.Windows.Forms;
-	using Microsoft.Framework.DependencyInjection;
-
 	internal sealed class WindowsFormsApplication : Executable
 	{
 		public override void Execute()

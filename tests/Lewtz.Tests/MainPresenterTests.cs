@@ -1,38 +1,40 @@
 ﻿using FluentAssertions;
+using Moq;
+using Presentation;
 using Presentation.Presenters;
 using System;
 using TestAttributes;
 
-namespace Lewtz.Tests
+namespace WinForms.Tests
 {
 	public class MainPresenterTests
 	{
+		private static object DefaultGenerator
+		{
+			get
+			{
+				return new object();
+			}
+		}
+
+		private static IApplicationController DefaultController
+		{
+			get
+			{
+				return new Mock<IApplicationController>().Object;
+			}
+		}
+
+		private static object DefaultView
+		{
+			get
+			{
+				return new object();
+			}
+		}
+
 		public class Constructor
 		{
-			private static object DefaultGenerator
-			{
-				get
-				{
-					return new object();
-				}
-			}
-
-			private static object DefaultController
-			{
-				get
-				{
-					return new object();
-				}
-			}
-
-			private static object DefaultView
-			{
-				get
-				{
-					return new object();
-				}
-			}
-
 			[Unit]
 			public static void WhenLootGeneratorIsNullThenThrowsException()
 			{
@@ -59,6 +61,28 @@ namespace Lewtz.Tests
 			{
 				Action act = () => new MainPresenter(DefaultGenerator, DefaultController, DefaultView);
 				act.ShouldNotThrow<ArgumentNullException>();
+			}
+		}
+
+		public class Exit
+		{
+			private static IMainPresenter CreateTarget(
+				object lootGenerator = null,
+				IApplicationController controller = null,
+				object view = null)
+			{
+				return new MainPresenter(
+					lootGenerator ?? DefaultGenerator,
+					controller ?? DefaultController,
+					view ?? DefaultView);
+            }
+
+			[Unit]
+			public static void WhenInvokedThenCallsExitOnController()
+			{
+				var controller = new Mock<IApplicationController>();
+				CreateTarget(controller: controller.Object).Exit();
+				controller.Verify(m => m.Exit(), Times.Once);
 			}
 		}
 	}

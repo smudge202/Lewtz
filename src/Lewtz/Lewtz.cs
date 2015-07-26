@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using rds;
 
-namespace Lewtz
+namespace WinForms
 {
 	public partial class FormLewtz : Form
 	{

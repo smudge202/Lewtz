@@ -2,7 +2,7 @@
 using Presentation;
 using System;
 
-namespace Lewtz
+namespace WinForms
 {
     static class Program
     {

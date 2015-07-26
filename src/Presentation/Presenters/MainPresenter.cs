@@ -2,9 +2,11 @@
 
 namespace Presentation.Presenters
 {
-	public sealed class MainPresenter
+	internal sealed class MainPresenter : IMainPresenter
 	{
-		public MainPresenter(object lootGenerator, object controller, object view)
+		private readonly IApplicationController _controller;
+
+		public MainPresenter(object lootGenerator, IApplicationController controller, object view)
 		{
 			if (lootGenerator == null)
 				throw new ArgumentNullException(nameof(lootGenerator));
@@ -12,11 +14,12 @@ namespace Presentation.Presenters
 				throw new ArgumentNullException(nameof(controller));
 			if (view == null)
 				throw new ArgumentNullException(nameof(view));
+			_controller = controller;
 		}
 
-		internal void Exit()
+		public void Exit()
 		{
-			//Application.Exit();
+			_controller.Exit();
 		}
 	}
 }
